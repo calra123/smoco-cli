@@ -5,6 +5,6 @@ setup(
     packages = ['smoco'],
     entry_points = {
         'console_scripts': [
-            "smoco-cli = smoco.__main__:main"
+            "smoco = smoco.__main__:main"
         ]
     })
