@@ -2,14 +2,19 @@ import json
 import yfinance as yf
 import pandas as pd
 
+# fpath = "smoco/index_symbols.json"
+# f = open(fpath, 'r')
+# fdata = json.load(f)
+
 def get_symbol_codes(nse_symbol):
-
-    f = open('index_symbols.json')
+    fpath = "smoco/index_symbols.json"
+    f = open(fpath, 'r')
     fdata = json.load(f)
-    symbol_list = fdata[nse_symbol]
 
-    string_codes_list = " ".join(symbol_list)
-    return string_codes_list
+    symbol_list = fdata[nse_symbol]
+    list_codes_string = " ".join(symbol_list)
+    f.close()
+    return list_codes_string
 
 
 def get_data(nse_symbol, time_period="10y", interval="1mo", symbol_only=False):
@@ -22,5 +27,5 @@ def get_data(nse_symbol, time_period="10y", interval="1mo", symbol_only=False):
         interval=interval,
         group_by="ticker",
         auto_adjust=False)
-        df = pd.DataFrame(data)
+    df = pd.DataFrame(data)
     return df

@@ -1,10 +1,10 @@
 import sys
 from .stats import get_data
-# from .classmodule import MyClass
-# from .funcmodule import my_function
+from .cleaned_monthly import gen_analysis
+import argparse
 
 def main():
-    print("Hello wow")
+    print("SMOCO is a Stock Market Ananlysis Tool.\nCopyright "+u'\N{COPYRIGHT SIGN}'+" Himanshi Kalra")
     print('in main')
     args = sys.argv[1:]
     print('count of args :: {}'.format(len(args)))
@@ -27,19 +27,12 @@ def main():
 
         if arg == "index_symbol":
             print("Enter index symbol like NSEI(Nifty 50), NSEBANK(NIFTY BANK), CNXIT(NSE IT): ")
-            choices['symbol_name']
+            choices['index_symbol'] = input("Enter symbol: ")
 
     data = get_data(choices['index_symbol'], time_period=choices['time_period'])
 
-    analysis = gen_analysis(data, nse_symbol)
+    gen_analysis(data, choices['index_symbol'])
 
-
-
-
-    # my_function('hello world')
-
-    # my_object = MyClass('Thomas')
-    # my_object.say_name()
 
 if __name__ == '__main__':
     main()
